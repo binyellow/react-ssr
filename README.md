@@ -1,4 +1,4 @@
 # react-ssr
 
-### step-1
-基本路由跳转
+### step-2
+SSR 服务端加载生成staticRouter返回
