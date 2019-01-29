@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --hot --watch --inline",
-    "server": "nodemon server.js --exec babel-node"
+    "server": "nodemon server/index.js --exec babel-node"
   },
   "repository": {
     "type": "git",
@@ -19,17 +19,25 @@
   },
   "homepage": "https://github.com/binyellow/react-ssr#readme",
   "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "7",
+    "babel-plugin-dynamic-import-node": "^2.2.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "html-webpack-plugin": "^3.2.0",
+    "import-inspector": "^2.0.0",
+    "koa": "^2.7.0",
+    "koa-router": "^7.4.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^4.3.1",
     "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "webpack-cli": "^3.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

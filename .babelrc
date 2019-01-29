@@ -1,3 +1,14 @@
 {
   "presets": ["react", "env", "stage-0"],
+  // "plugins": [
+  //   "syntax-dynamic-import",
+  //   "react-loadable/babel",
+  //   ["import-inspector", {
+  //     "serverSideRequirePath": true
+  //   }]
+  // ]
+  "plugins": [
+    "dynamic-import-node",
+    "react-loadable/babel",
+  ]
 }
