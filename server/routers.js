@@ -2,7 +2,7 @@ import Loadable from 'react-loadable';
 
 const AsyncHello = Loadable({
   loading: <div>loading...</div>,
-  loader: () => import('./Hello'), 
+  loader: () => import(/* webpackChunkName: 'Hello' */'./Hello'), 
 })
 const AsyncHome = Loadable({
   loading: <div>loading...</div>,

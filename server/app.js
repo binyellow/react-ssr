@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 import Loadable from 'react-loadable';
 //下面这个是需要让react-loadable在服务端可运行需要的，下面会讲到
 import { getBundles } from 'react-loadable/webpack';
-// import stats from '../build/react-loadable.json';
+import stats from '../build/react-loadable.json';
 
 //这里吧react-router的路由设置抽出去，使得在浏览器跟服务端可以共用
 //下面也会讲到...
