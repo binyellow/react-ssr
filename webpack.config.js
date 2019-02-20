@@ -1,8 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
+
 module.exports = {
-  entry: path.resolve(__dirname, 'index.js'),
+  // target: 'node',
+  // externals: [nodeExternals()],
+  entry: path.resolve(__dirname, './src/client.js'),
   output:{
     path: path.resolve(__dirname, 'build'),
     filename:'index.js',
