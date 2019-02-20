@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+const { ReactLoadablePlugin } = require('react-loadable/webpack');
 
 module.exports = {
   // target: 'node',
@@ -32,6 +32,9 @@ module.exports = {
       inject: 'body',
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new ReactLoadablePlugin({
+      filename: './build/react-loadable.json',
+    }),
   ],
   devServer: {
     contentBase: './build',

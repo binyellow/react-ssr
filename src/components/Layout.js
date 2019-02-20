@@ -1,8 +1,22 @@
 import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
-import Home from "./Home";
-import Hello from "./Hello";
+import Loadable from 'react-loadable';
 
+const loading = () => <div>Loading...</div>;
+const LazyLoad = loader => Loadable({
+  loader,
+  loading,
+  delay: 200,
+})
+const Home = Loadable({
+  loader: ()=> import('./Home'),
+  loading,
+});
+const Hello = Loadable({
+  loader: ()=> import('./Hello'),
+  loading,
+});
+// const Hello = LazyLoad(()=> import('./Hello'));
 export default class Layout extends React.Component {
   constructor() {
     super();

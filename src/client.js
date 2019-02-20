@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import Loadable from 'react-loadable';
 
 import Layout from "./components/Layout";
 
@@ -11,4 +12,6 @@ const jsx = (
 );
 
 const app = document.getElementById( "app" );
-ReactDOM.hydrate( jsx, app );
+Loadable.preloadReady().then(() => {
+  ReactDOM.hydrate( jsx, app );
+});
