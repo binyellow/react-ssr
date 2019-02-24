@@ -2,13 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Loadable from 'react-loadable';
+import { Provider } from 'react-redux';
 
 import Layout from "./components/Layout";
+import createStore from "./reducer/index";
 
+const store = createStore( window.REDUX_DATA );
 const jsx = (
-    <Router>
+    <Provider store={store}>
+      <Router>
         <Layout />
-    </Router>
+      </Router>
+    </Provider>
 );
 
 const app = document.getElementById( "app" );

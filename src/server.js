@@ -1,10 +1,13 @@
 import express from 'express';
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
+import { Provider } from 'react-redux';
 import React from 'react';
 import path from 'path';
 import Loadable from 'react-loadable';
-import { getBundles } from 'react-loadable/webpack'
+import { getBundles } from 'react-loadable/webpack';
+import createStore from './reducer/index';
+import { initializeSession } from './reducer/login';
 import Layout from './components/Layout';
 import stats from '../build/react-loadable.json';
 
@@ -13,17 +16,22 @@ app.use( express.static( path.resolve( __dirname, "../build" ) ) );
 app.get( "/*", ( req, res ) => {
   let modules = [];
   const context = { };
+  const store = createStore();
+  store.dispatch(initializeSession());
   const jsx = (
-    <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-      <StaticRouter context={ context } location={ req.url }>
-          <Layout />
-      </StaticRouter>
-    </Loadable.Capture>
+    <Provider store={store}>
+      <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+        <StaticRouter context={ context } location={ req.url }>
+            <Layout />
+        </StaticRouter>
+      </Loadable.Capture>
+    </Provider>
   );
   const reactDom = renderToString( jsx );
   let bundles = getBundles(stats, modules);
+  const state = store.getState();
   res.writeHead( 200, { "Content-Type": "text/html" } );
-  res.end( htmlTemplate( reactDom, bundles ) );
+  res.end( htmlTemplate( reactDom, bundles, state ) );
 } );
 
 Loadable.preloadAll().then(() => {
@@ -32,7 +40,7 @@ Loadable.preloadAll().then(() => {
   });
 });
 
-function htmlTemplate( reactDom, bundles ) {
+function htmlTemplate( reactDom, bundles, state ) {
   return `
       <!DOCTYPE html>
       <html>
@@ -43,6 +51,9 @@ function htmlTemplate( reactDom, bundles ) {
       
       <body>
           <div id="app">${ reactDom }</div>
+          <script>
+            window.REDUX_DATA = ${ JSON.stringify( state ) }
+          </script>
           <script src="./index.js"></script>
           ${bundles.map(bundle => {
             return `<script src="/${bundle.file}"></script>`
