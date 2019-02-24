@@ -26,11 +26,11 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   plugins: [
-    new HTMLWebpackPlugin({
-      template: './index.html',
-      title: "testPlugin",
-      inject: 'body',
-    }),
+    // new HTMLWebpackPlugin({
+    //   template: './index.html',
+    //   title: "testPlugin",
+    //   inject: 'body',
+    // }),
     new webpack.HotModuleReplacementPlugin(),
     new ReactLoadablePlugin({
       filename: './build/react-loadable.json',
