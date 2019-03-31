@@ -8,7 +8,6 @@ export const sessionReducer = ( state = {}, action ) => {
       case "INITIALIZE_SESSION":
           return {};
       case "UPDATE_SESSION":
-        console.log(action);
         return action.payload || {};
       default: return state;
   }
