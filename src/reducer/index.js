@@ -1,8 +1,10 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { sessionReducer } from './login';
 
-const reducer = combineReducers( {
+const reducer = combineReducers({
     loggedIn: sessionReducer,
-} );
+});
 
-export default ( initialState ) => createStore( reducer, initialState );
+export const createServerStore = (initialState) => createStore( reducer, initialState);
+export const createClientStore = (initialState) => createStore( reducer, initialState, window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+// export default ( initialState ) => createStore( reducer, initialState, window && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

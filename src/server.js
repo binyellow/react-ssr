@@ -6,18 +6,21 @@ import React from 'react';
 import path from 'path';
 import Loadable from 'react-loadable';
 import { getBundles } from 'react-loadable/webpack';
-import createStore from './reducer/index';
-import { initializeSession } from './reducer/login';
+import { fetchUserMsg } from './services/user';
+import { createServerStore } from './reducer/index';
+import { initializeUserMsg } from './reducer/login';
 import Layout from './components/Layout';
 import stats from '../build/react-loadable.json';
 
 const app = express();
 app.use( express.static( path.resolve( __dirname, "../build" ) ) );
-app.get( "/*", ( req, res ) => {
+app.get( "/*", async ( req, res ) => {
   let modules = [];
-  const context = { };
-  const store = createStore();
-  store.dispatch(initializeSession());
+  const context = {};
+  const store = createServerStore();
+  const { dispatch } = store;
+  const result = await fetchUserMsg('binyellow');
+  dispatch(initializeUserMsg(result.data))
   const jsx = (
     <Provider store={store}>
       <Loadable.Capture report={moduleName => modules.push(moduleName)}>
