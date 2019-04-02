@@ -42,4 +42,10 @@ module.exports = {
     hot: true
   },
   mode: 'development',
+  // optimization: {
+  //   splitChunks: {
+  //     // include all types of chunks
+  //     chunks: 'all'
+  //   }
+  // }
 }

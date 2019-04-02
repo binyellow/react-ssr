@@ -12,6 +12,7 @@ export default class Home extends Component {
         Home
         <p>{loggedIn.login}</p>
         <p><a href={loggedIn.url}>click me</a></p>
+        <a href={loggedIn.html_url}>{loggedIn.html_url}</a>
       </div>
     )
   }

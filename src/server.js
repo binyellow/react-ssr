@@ -1,5 +1,5 @@
 import express from 'express';
-import { renderToString } from "react-dom/server";
+import { renderToStaticMarkup } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -20,7 +20,8 @@ app.get( "/*", async ( req, res ) => {
   const store = createServerStore();
   const { dispatch } = store;
   const result = await fetchUserMsg('binyellow');
-  dispatch(initializeUserMsg(result.data))
+  dispatch(initializeUserMsg(result.data));
+  console.log(req.url);
   const jsx = (
     <Provider store={store}>
       <Loadable.Capture report={moduleName => modules.push(moduleName)}>
@@ -30,7 +31,7 @@ app.get( "/*", async ( req, res ) => {
       </Loadable.Capture>
     </Provider>
   );
-  const reactDom = renderToString( jsx );
+  const reactDom = renderToStaticMarkup( jsx );
   let bundles = getBundles(stats, modules);
   const state = store.getState();
   res.writeHead( 200, { "Content-Type": "text/html" } );
