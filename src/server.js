@@ -49,7 +49,10 @@ function htmlTemplate( reactDom, bundles, state ) {
       <!DOCTYPE html>
       <html>
       <head>
-          <meta charset="utf-8">
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <link rel="icon" href="data:;base64,=">
           <title>React SSR</title>
       </head>
       
@@ -57,6 +60,7 @@ function htmlTemplate( reactDom, bundles, state ) {
           <div id="app">${ reactDom }</div>
           <script>
             window.REDUX_DATA = ${ JSON.stringify( state ) }
+            window.env = 'server'
           </script>
           <script src="./index.js"></script>
           ${bundles.map(bundle => {
