@@ -8,7 +8,7 @@ export default class Home extends Component {
   render() {
     const { loggedIn } = this.props;
     return (
-      <div>
+      <div suppressHydrationWarning={true}>
         Home
         <p>{loggedIn.login}</p>
         <p><a href={loggedIn.url}>click me</a></p>
