@@ -15,28 +15,32 @@ import stats from '../build/react-loadable.json';
 const app = express();
 app.use( express.static( path.resolve( __dirname, "../build" ) ) );
 app.get( "/*", async ( req, res ) => {
-  let modules = [];
-  const context = {};
-  const store = createServerStore();
-  const { dispatch } = store;
-  const result = await fetchUserMsg('binyellow');
-  dispatch(initializeUserMsg(result.data));
-  console.log(req.url);
-  const jsx = (
-    <Provider store={store}>
-      <Loadable.Capture report={moduleName => modules.push(moduleName)}>
-        <StaticRouter context={ context } location={ req.url }>
-            <Layout />
-        </StaticRouter>
-      </Loadable.Capture>
-    </Provider>
-  );
-  const reactDom = renderToStaticMarkup( jsx );
-  let bundles = getBundles(stats, modules);
-  const state = store.getState();
-  res.writeHead( 200, { "Content-Type": "text/html" } );
-  res.end( htmlTemplate( reactDom, bundles, state ) );
-} );
+  try {
+    let modules = [];
+    const context = {};
+    const store = createServerStore();
+    const { dispatch } = store;
+    const result = await fetchUserMsg('binyellow');
+    dispatch(initializeUserMsg(result.data));
+    console.log(req.url);
+    const jsx = (
+      <Provider store={store}>
+        <Loadable.Capture report={moduleName => modules.push(moduleName)}>
+          <StaticRouter context={ context } location={ req.url }>
+              <Layout />
+          </StaticRouter>
+        </Loadable.Capture>
+      </Provider>
+    );
+    const reactDom = renderToStaticMarkup( jsx );
+    let bundles = getBundles(stats, modules);
+    const state = store.getState();
+    res.writeHead( 200, { "Content-Type": "text/html" } );
+    res.end( htmlTemplate( reactDom, bundles, state ) );
+  } catch (error) {
+    throw error;
+  }
+});
 
 Loadable.preloadAll().then(() => {
   app.listen(3000, () => {
