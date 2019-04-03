@@ -43,9 +43,18 @@ module.exports = {
   },
   mode: 'development',
   // optimization: {
+  //   runtimeChunk: false,
   //   splitChunks: {
-  //     // include all types of chunks
-  //     chunks: 'all'
-  //   }
-  // }
+  //     cacheGroups: {
+  //       vendor: {
+  //         chunks: 'all',
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name: 'vendor',
+  //         maxAsyncRequests: 5,
+  //         priority: 10,
+  //         enforce: true,
+  //       },
+  //     },
+  //   },
+  // },
 }
