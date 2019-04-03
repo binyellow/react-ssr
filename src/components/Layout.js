@@ -9,11 +9,11 @@ const LazyLoad = loader => Loadable({
   delay: 200,
 })
 const Home = Loadable({
-  loader: ()=> import('./Home'),
+  loader: ()=> import(/* webpackChunkName: 'Home' */'./Home'),
   loading,
 });
 const Hello = Loadable({
-  loader: ()=> import('./Hello'),
+  loader: ()=> import(/* webpackChunkName: 'Hello' */'./Hello'),
   loading,
 });
 // const Hello = LazyLoad(()=> import('./Hello'));
