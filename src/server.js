@@ -1,5 +1,5 @@
 import express from 'express';
-import { renderToStaticMarkup } from "react-dom/server";
+import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -32,7 +32,7 @@ app.get( "/*", async ( req, res ) => {
         </Loadable.Capture>
       </Provider>
     );
-    const reactDom = renderToStaticMarkup( jsx );
+    const reactDom = renderToString( jsx );
     let bundles = getBundles(stats, modules);
     const state = store.getState();
     res.writeHead( 200, { "Content-Type": "text/html" } );
