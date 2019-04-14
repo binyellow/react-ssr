@@ -1,6 +1,6 @@
 {
   "javascript": {
-    "main": "bundle.js"
+    "main": "/bundle.js"
   },
   "styles": {},
   "assets": {

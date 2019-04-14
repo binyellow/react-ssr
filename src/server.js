@@ -1,8 +1,8 @@
-var WebpackIsomorphicTools = require('webpack-isomorphic-tools')
-
+const WebpackIsomorphicTools = require('webpack-isomorphic-tools')
+const path = require('path');
 // this must be equal to your Webpack configuration "context" parameter
-var projectBasePath = require('path').join(__dirname, '../')
-
+const projectBasePath = '/Users/binyellow/WorkSpace/MyGithub/react-ssr';
+console.log('path===>', projectBasePath);
 // this global variable will be used later in express middleware
 global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack-isomorphic-tools-configuration'))
     // initializes a server-side instance of webpack-isomorphic-tools
@@ -11,7 +11,7 @@ global.webpackIsomorphicTools = new WebpackIsomorphicTools(require('../webpack-i
     // (if you prefer Promises over callbacks 
     //  you can omit the callback parameter
     //  and then it will return a Promise instead)
-    .server(projectBasePath, function () {
+  .server(projectBasePath, function () {
         // webpack-isomorphic-tools is all set now.
         // here goes all your web application code:
         // (it must reside in a separate *.js file 

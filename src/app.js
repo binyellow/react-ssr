@@ -14,7 +14,6 @@ import stats from '../build/react-loadable.json';
 
 const app = express();
 app.use( express.static( path.join( __dirname, "./" ) ) );
-console.log('path===>', path.join( __dirname, "./" ));
 app.get( "/*", async ( req, res ) => {
   try {
     // let modules = [];

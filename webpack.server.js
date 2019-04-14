@@ -19,6 +19,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     libraryExport: 'default',
     libraryTarget: 'commonjs2',
+    publicPath: '/'
 	},
 	externals: [nodeExternals()],
 	module: {
