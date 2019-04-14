@@ -1,0 +1,7 @@
+{
+  "server":
+  {
+    "input": "../src/server.js",
+    "output": "./build/bundle.js"
+  }
+}
