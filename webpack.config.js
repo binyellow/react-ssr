@@ -21,7 +21,13 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }
+      },{
+        test: /\.css$/,
+        loader: 'css-loader',
+        options: {
+          modules: true,
+        },
+      },
     ]
   },
   devtool: 'inline-source-map',

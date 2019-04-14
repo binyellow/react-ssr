@@ -1,0 +1,15 @@
+{
+  "javascript": {
+    "main": "bundle.js"
+  },
+  "styles": {},
+  "assets": {
+    "./src/components/index.css": {
+      "test": "index_test_1KQWg",
+      "_style": ".index_test_1KQWg {\n  display: flex;\n  align-items: center;\n}"
+    }
+  },
+  "webpack": {
+    "version": "4.29.0"
+  }
+}
