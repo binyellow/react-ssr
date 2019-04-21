@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon ./src/server.js --exec babel-node",
-    "dev": "npm-run-all --parallel dev:build:**",
+    "dev": "npm-run-all --parallel dev:**",
     "dev:build:server": "webpack --config webpack.server.js --watch",
     "dev:build:client": "webpack --config webpack.client.js --watch",
     "start": "nodemon --watch build --exec node \"./build/bundle.js\""
