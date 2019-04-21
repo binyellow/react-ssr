@@ -41,3 +41,6 @@ export default class Layout extends React.Component {
     );
   }
 }
+if(module.hot){
+  module.hot.accept()
+}

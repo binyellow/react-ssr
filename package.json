@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --config webpack-client.js",
+    "dev": "webpack-dev-server --config ./webpack/webpack.client.js --inline --progress",
     "server": "nodemon ./src/server.js --exec babel-node",
     "dev:rm": "rm -rf build",
     "ssr": "npm-run-all dev:ssr:**",
-    "dev:ssr:build:client": "webpack --config webpack.client.js --progress --color",
-    "dev:ssr:build:server": "webpack --config webpack.server.js --progress --color",
+    "dev:ssr:build:client": "webpack --config ./webpack/webpack.client.js --progress --color",
+    "dev:ssr:build:server": "webpack --config ./webpack/webpack.server.js --progress --color",
     "dev:ssr:start": "nodemon --watch build --exec node \"./build/bundle.js\""
   },
   "repository": {
@@ -44,6 +44,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "npm-run-all": "^4.1.5",
+    "open-browser-webpack-plugin": "^0.0.5",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-loadable": "^5.5.0",

@@ -1,13 +1,14 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const config = require('./webpack.base.js');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const clientConfig = {
 	mode: 'development',
-	entry: './src/client',
+	entry: path.join(__dirname, '../src/client'),
 	output: {
 		filename: 'index.js',
-		path: path.resolve(__dirname, 'build')
+		path: path.join(__dirname, '../build')
 	},
 	module: {
 		rules: [{
@@ -30,10 +31,13 @@ const clientConfig = {
 		}]
   },
   devServer: {
-    contentBase: path.join(__dirname, './'),
+    contentBase: path.join(__dirname, '../'),
     compress: true,
-    port: 9000
-  }
+    port: 9000,
+  },
+  plugins: [
+    new OpenBrowserPlugin({ url: 'http://localhost:9000' }),
+  ]
 };
 
 module.exports = merge(config, clientConfig);
