@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import Loadable from 'react-loadable';
-
+import styles from './index.css';
 const loading = () => <div>Loading...</div>;
 const LazyLoad = loader => Loadable({
   loader,
@@ -26,10 +26,11 @@ export default class Layout extends React.Component {
   }
 
   render() {
+    console.log(styles);
     return (
       <div>
         <h1>{this.state.title}</h1>
-        <div>
+        <div className={styles.test}>
           <Link to="/">Home</Link>
           <Link to="/hello">Hello</Link>
         </div>

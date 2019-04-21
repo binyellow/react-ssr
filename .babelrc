@@ -1,14 +1,14 @@
 {
-  "presets": ["react", ["env", {
-    "targets": {
-      "node": "current"
-    }
-  }], "stage-0"],
+  // "presets": ["react", ["env", {
+  //   "targets": {
+  //     "node": "current"
+  //   }
+  // }], "stage-0"],
   "plugins": [
     // "syntax-dynamic-import",
     // "@babel/plugin-proposal-class-properties",
-    "dynamic-import-node",
-    "react-loadable/babel", // 声明正在加载哪些模块
+    // "dynamic-import-node",
+    // "react-loadable/babel", // 声明正在加载哪些模块
     "transform-decorators-legacy",
   ]
 }

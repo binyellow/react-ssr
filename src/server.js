@@ -13,7 +13,7 @@ import Layout from './components/Layout';
 import stats from '../build/react-loadable.json';
 
 const app = express();
-app.use( express.static( path.resolve( __dirname, "../build" ) ) );
+app.use(express.static('build'));
 app.get( "/*", async ( req, res ) => {
   try {
     let modules = [];
@@ -66,7 +66,7 @@ function htmlTemplate( reactDom, bundles, state ) {
             window.REDUX_DATA = ${ JSON.stringify( state ) }
             window.env = 'server'
           </script>
-          <script src="./index.js"></script>
+          <script src="/index.js"></script>
           ${bundles.map(bundle => {
             return `<script src="/${bundle.file}"></script>`
             // alternatively if you are using publicPath option in webpack config
