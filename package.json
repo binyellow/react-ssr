@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:rm": "rm -rf build",
     "server": "nodemon ./src/server.js --exec babel-node",
-    "dev": "npm-run-all --parallel dev:**",
-    "dev:build:server": "webpack --config webpack.server.js --watch",
-    "dev:build:client": "webpack --config webpack.client.js --watch",
-    "start": "nodemon --watch build --exec node \"./build/bundle.js\""
+    "dev": "npm-run-all dev:**",
+    "dev:build:client": "webpack --config webpack.client.js --progress --color",
+    "dev:build:server": "webpack --config webpack.server.js --progress --color",
+    "dev:start": "nodemon --watch build --exec node \"./build/bundle.js\""
   },
   "repository": {
     "type": "git",
