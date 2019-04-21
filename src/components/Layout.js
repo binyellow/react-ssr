@@ -27,9 +27,9 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.test}>
         <h1>{this.state.title}</h1>
-        <div className={styles.test}>
+        <div className={styles['link-wrapper']}>
           <Link to="/">Home</Link>
           <Link to="/hello">Hello</Link>
         </div>

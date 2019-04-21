@@ -28,7 +28,12 @@ const clientConfig = {
 				publicPath: '/'
 			}
 		}]
-	}
+  },
+  devServer: {
+    contentBase: path.join(__dirname, './'),
+    compress: true,
+    port: 9000
+  }
 };
 
 module.exports = merge(config, clientConfig);
