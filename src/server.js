@@ -22,7 +22,6 @@ app.get( "/*", async ( req, res ) => {
     const { dispatch } = store;
     const result = await fetchUserMsg('binyellow');
     dispatch(initializeUserMsg(result.data));
-    console.log(req.url);
     const jsx = (
       <Provider store={store}>
         <Loadable.Capture report={moduleName => modules.push(moduleName)}>

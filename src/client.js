@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import Layout from "./components/Layout";
 import { createClientStore } from "./reducer/index";
 
-console.log('client');
 const store = createClientStore( window.REDUX_DATA );
 const jsx = (
     <Provider store={store}>
