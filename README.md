@@ -7,3 +7,5 @@
 ### 启动客户端调试
 1. `yarn`
 2. `npm run dev`
+
+![预览效果](ssr.gif)
