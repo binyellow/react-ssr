@@ -9,7 +9,7 @@ const serverConfig = {
 	entry: './src/server',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'build')
+		path: path.join(__dirname, '../build')
 	},
 	externals: [nodeExternals()],
 	module: {
@@ -28,7 +28,7 @@ const serverConfig = {
 			loader: 'url-loader',
 			options: {
 				limit: 8000,
-				outputPath: '../build/',
+				outputPath: '../../build/',
 				publicPath: '/'
 			}
 		}]
